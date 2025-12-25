@@ -16,7 +16,7 @@ export function EmojiSelector({ onEmojiSelect, disabled, selectedEmoji, emojiLis
         <Button
           key={emoji}
           variant="outline"
-          className={`w-8 h-8 p-0 disabled:opacity-50 bg-black/20 hover:bg-white/10 border-white/10 ${emoji === selectedEmoji ? "bg-purple-500/20 border-purple-500 ring-1 ring-purple-500" : ""}`}
+          className={`w-8 h-8 p-0 disabled:opacity-50 bg-black/20 hover:bg-white/10 border-white/10 text-xl text-white ${emoji === selectedEmoji ? "bg-purple-500/20 border-purple-500 ring-1 ring-purple-500" : ""}`}
           onClick={() => onEmojiSelect(emoji)}
           disabled={disabled}
         >
