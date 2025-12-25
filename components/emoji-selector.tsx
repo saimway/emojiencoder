@@ -16,7 +16,9 @@ export function EmojiSelector({ onEmojiSelect, disabled, selectedEmoji, emojiLis
         <Button
           key={emoji}
           variant="outline"
-          className={`w-8 h-8 p-0 disabled:opacity-50 ${emoji === selectedEmoji ? "bg-accent border-purple-500" : ""}`}
+          className={`h-8 px-2 py-0 text-xs rounded-none border border-green-800 bg-black text-green-500 hover:bg-green-900 hover:text-green-300 transition-colors duration-0
+            ${emoji === selectedEmoji ? "bg-green-700 text-black border-green-500 font-bold" : ""}
+            disabled:opacity-50 disabled:cursor-not-allowed`}
           onClick={() => onEmojiSelect(emoji)}
           disabled={disabled}
         >
@@ -26,4 +28,3 @@ export function EmojiSelector({ onEmojiSelect, disabled, selectedEmoji, emojiLis
     </div>
   )
 }
-
