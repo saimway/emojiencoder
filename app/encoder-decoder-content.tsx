@@ -69,10 +69,10 @@ export function Base64EncoderDecoderContent() {
         placeholder={isEncoding ? "Enter text to encode" : "Paste an emoji to decode"}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        className="min-h-[100px]"
+        className="min-h-[100px] bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-purple-500"
       />
 
-      <div className="font-bold text-sm">Pick an emoji</div>
+      <div className="font-bold text-sm text-white/90">Pick an emoji</div>
       <EmojiSelector
         onEmojiSelect={setSelectedEmoji}
         selectedEmoji={selectedEmoji}
@@ -80,7 +80,7 @@ export function Base64EncoderDecoderContent() {
         disabled={!isEncoding}
       />
 
-      <div className="font-bold text-sm">Or pick a standard alphabet letter</div>
+      <div className="font-bold text-sm text-white/90">Or pick a standard alphabet letter</div>
       <EmojiSelector
         onEmojiSelect={setSelectedEmoji}
         selectedEmoji={selectedEmoji}
@@ -92,7 +92,7 @@ export function Base64EncoderDecoderContent() {
         placeholder={`${isEncoding ? "Encoded" : "Decoded"} output`}
         value={outputText}
         readOnly
-        className="min-h-[100px]"
+        className="min-h-[100px] bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-purple-500"
       />
 
       {errorText && <div className="text-red-500 text-center">{errorText}</div>}
