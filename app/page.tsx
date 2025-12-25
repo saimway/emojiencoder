@@ -15,7 +15,7 @@ export default function EncoderDecoder() {
           <Base64EncoderDecoderContent />
         </Suspense>
         <div className="text-center my-4 border-t border-green-500/50 pt-2">
-          <span className="text-xs text-green-700 font-bold uppercase">Build by saim</span>
+          <span className="text-xs text-green-700 font-bold uppercase">Built by saim</span>
         </div>
       </Card>
     </div>
