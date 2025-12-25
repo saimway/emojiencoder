@@ -4,16 +4,18 @@ import { Base64EncoderDecoderContent } from "./encoder-decoder-content"
 
 export default function EncoderDecoder() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-950 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-black/40 backdrop-blur-xl border-white/10 text-white shadow-2xl">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Hide a message in an emoji</CardTitle>
+    <div className="min-h-screen bg-black flex items-center justify-center p-4 font-mono">
+      <Card className="w-full max-w-md bg-black border-2 border-green-500 text-green-500 shadow-[0_0_10px_rgba(34,197,94,0.3)] rounded-none">
+        <CardHeader className="border-b border-green-500/50">
+          <CardTitle className="text-xl font-bold text-center tracking-widest uppercase">
+            &gt; TERMINAL_ENCODER_V1.0 <span className="animate-pulse">_</span>
+          </CardTitle>
         </CardHeader>
-        <Suspense fallback={<CardContent>Loading...</CardContent>}>
+        <Suspense fallback={<CardContent>Initializing...</CardContent>}>
           <Base64EncoderDecoderContent />
         </Suspense>
-        <div className="text-center my-4">
-          <span className="text-sm text-white/50 font-medium">Build by saim</span>
+        <div className="text-center my-4 border-t border-green-500/50 pt-2">
+          <span className="text-xs text-green-700 font-bold uppercase">Build by saim</span>
         </div>
       </Card>
     </div>

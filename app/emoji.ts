@@ -23,4 +23,21 @@ export const EMOJI_LIST = [
     "🥹",
 ]
 
-export const ALPHABET_LIST = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+export const SLANG_LIST = [
+    "Lol",
+    "HAHA",
+    "fr",
+    "bruh",
+    "no cap",
+    "bet",
+    "yeet",
+    "slay",
+    "sus",
+    "based",
+    "cringe",
+    "ratio",
+    "L",
+    "W",
+    "ngl",
+    "idk",
+]

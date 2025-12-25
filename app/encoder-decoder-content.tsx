@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { decode, encode } from "./encoding"
 import { EmojiSelector } from "@/components/emoji-selector"
-import { ALPHABET_LIST, EMOJI_LIST } from "./emoji"
+import { SLANG_LIST, EMOJI_LIST } from "./emoji"
 
 export function Base64EncoderDecoderContent() {
   const router = useRouter()
@@ -56,46 +56,69 @@ export function Base64EncoderDecoderContent() {
   const isEncoding = mode === "encode"
 
   return (
-    <CardContent className="space-y-4">
-      <p>This tool allows you to encode a hidden message into an emoji or alphabet letter. You can copy and paste text with a hidden message in it to decode the message.</p>
+    <CardContent className="space-y-6 pt-6 font-mono text-sm">
+      <p className="text-green-600 border-l-2 border-green-800 pl-2">
+        // SYSTEM_MSG: Encode hidden message into unicode variation selectors.
+        <br/>
+        // Copy/paste output to decode.
+      </p>
 
-      <div className="flex items-center justify-center space-x-2">
-        <Label htmlFor="mode-toggle">Decode</Label>
-        <Switch id="mode-toggle" checked={isEncoding} onCheckedChange={handleModeToggle} />
-        <Label htmlFor="mode-toggle">Encode</Label>
+      <div className="flex items-center justify-center space-x-4 border border-green-900 p-2 bg-black">
+        <Label htmlFor="mode-toggle" className={`uppercase ${!isEncoding ? "text-green-400 font-bold" : "text-green-800"}`}>
+          Decode
+        </Label>
+        <Switch
+          id="mode-toggle"
+          checked={isEncoding}
+          onCheckedChange={handleModeToggle}
+          className="data-[state=checked]:bg-green-700 data-[state=unchecked]:bg-green-900 border border-green-500 rounded-none"
+        />
+        <Label htmlFor="mode-toggle" className={`uppercase ${isEncoding ? "text-green-400 font-bold" : "text-green-800"}`}>
+          Encode
+        </Label>
       </div>
 
-      <Textarea
-        placeholder={isEncoding ? "Enter text to encode" : "Paste an emoji to decode"}
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        className="min-h-[100px] bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-purple-500"
-      />
+      <div className="space-y-1">
+        <Label className="text-xs uppercase tracking-widest text-green-700">Input_Stream:</Label>
+        <Textarea
+          placeholder={isEncoding ? "> Enter text to encode..." : "> Paste carrier text to decode..."}
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          className="min-h-[100px] bg-black border-2 border-green-800 text-green-400 placeholder:text-green-900 focus-visible:ring-0 focus-visible:border-green-400 rounded-none resize-none font-mono"
+        />
+      </div>
 
-      <div className="font-bold text-sm text-white/90">Pick an emoji</div>
-      <EmojiSelector
-        onEmojiSelect={setSelectedEmoji}
-        selectedEmoji={selectedEmoji}
-        emojiList={EMOJI_LIST}
-        disabled={!isEncoding}
-      />
+      <div className="space-y-2">
+        <div className="text-xs uppercase tracking-widest text-green-700">Select_Carrier_Emoji:</div>
+        <EmojiSelector
+          onEmojiSelect={setSelectedEmoji}
+          selectedEmoji={selectedEmoji}
+          emojiList={EMOJI_LIST}
+          disabled={!isEncoding}
+        />
+      </div>
 
-      <div className="font-bold text-sm text-white/90">Or pick a standard alphabet letter</div>
-      <EmojiSelector
-        onEmojiSelect={setSelectedEmoji}
-        selectedEmoji={selectedEmoji}
-        emojiList={ALPHABET_LIST}
-        disabled={!isEncoding}
-      />
+      <div className="space-y-2">
+        <div className="text-xs uppercase tracking-widest text-green-700">Or_Select_Slang_Term:</div>
+        <EmojiSelector
+          onEmojiSelect={setSelectedEmoji}
+          selectedEmoji={selectedEmoji}
+          emojiList={SLANG_LIST}
+          disabled={!isEncoding}
+        />
+      </div>
 
-      <Textarea
-        placeholder={`${isEncoding ? "Encoded" : "Decoded"} output`}
-        value={outputText}
-        readOnly
-        className="min-h-[100px] bg-black/20 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-purple-500"
-      />
+      <div className="space-y-1">
+        <Label className="text-xs uppercase tracking-widest text-green-700">Output_Stream:</Label>
+        <Textarea
+          placeholder={isEncoding ? "> Waiting for input..." : "> Waiting for input..."}
+          value={outputText}
+          readOnly
+          className="min-h-[100px] bg-black border-2 border-green-800 text-green-400 placeholder:text-green-900 focus-visible:ring-0 focus-visible:border-green-400 rounded-none resize-none font-mono"
+        />
+      </div>
 
-      {errorText && <div className="text-red-500 text-center">{errorText}</div>}
+      {errorText && <div className="text-red-500 bg-red-950/20 border border-red-900 p-2 text-center uppercase animate-pulse">{errorText}</div>}
     </CardContent>
   )
 }
